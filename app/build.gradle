@@ -1,0 +1,52 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+apply plugin: 'realm-android'
+
+android {
+    compileSdkVersion Versions.compileSDK
+    buildToolsVersion "29.0.2"
+    defaultConfig {
+        applicationId "com.gojek.trendRepo"
+        minSdkVersion Versions.minSDK
+        targetSdkVersion Versions.targetSDK
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    api LibDeps.koin
+    api AppDeps.koinViewModel
+    api LibDeps.httpLogging
+    api LibDeps.retrofit
+    api LibDeps.gson
+    api LibDeps.gsonConverter
+    api LibDeps.rxJavaAdapter
+    api LibDeps.reactiveNetwork
+    api AppDeps.appCompat
+    api AppDeps.materialComponents
+    api AppDeps.constraintLayout
+    api AppDeps.recyclerView
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}
