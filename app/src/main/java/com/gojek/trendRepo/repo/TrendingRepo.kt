@@ -10,6 +10,7 @@ interface TrendingRepo {
 
     /**
      * method to fetch details of trending repositories
+     * @param fetchFromServer a boolean which tells whether to fetch from cache or server
      */
-    fun getTrendingRepos(): Observable<List<Repository>>
+    fun getTrendingRepos(fetchFromServer: Boolean = false): Observable<List<Repository>>
 }

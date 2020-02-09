@@ -1,24 +1,33 @@
 package com.gojek.trendRepo.model
 
+import com.gojek.trendRepo.repo.database.generateUUID
+import io.realm.RealmList
+import io.realm.RealmObject
+import io.realm.annotations.PrimaryKey
+
 /**
  * Model class for storing details of a repository
  */
-data class Repository(
-    val author: String? = null,
-    val name: String? = null,
-    val avatar: String? = null,
-    val url: String? = null,
-    val description: String? = null,
-    val language: String? = null,
-    val languageColor: String? = null,
-    val stars: Int? = null,
-    val forks: Int? = null,
-    val currentPeriodStars: Int? = null,
-    val builtBy: List<Contributor>? = null
-)
+open class Repository(
+    @PrimaryKey
+    var id: String = generateUUID(),
+    var author: String? = null,
+    var name: String? = null,
+    var avatar: String? = null,
+    var url: String? = null,
+    var description: String? = null,
+    var language: String? = null,
+    var languageColor: String? = null,
+    var stars: Int? = null,
+    var forks: Int? = null,
+    var currentPeriodStars: Int? = null,
+    var builtBy: RealmList<Contributor>? = null
+) : RealmObject()
 
-data class Contributor(
-    val href: String? = null,
-    val avatar: String? = null,
-    val username: String? = null
-)
+open class Contributor(
+    @PrimaryKey
+    var id: String? = generateUUID(),
+    var href: String? = null,
+    var avatar: String? = null,
+    var username: String? = null
+) : RealmObject()
