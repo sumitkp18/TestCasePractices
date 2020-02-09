@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="text_style_R12_black_base" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">@dimen/text_size_small</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textColor">@color/black_base</item>
+    </style>
+
+    <style name="text_style_R12_black_base_pf" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">@dimen/text_size_small</item>
+        <item name="android:fontFamily">@font/ping_fang_sc_regular</item>
+        <item name="android:textColor">@color/black_base</item>
+    </style>
+
+    <style name="text_style_M15_black_base" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textColor">@color/black_base</item>
+    </style>
+
+    <style name="text_style_R15_black_light" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textColor">@color/black_light</item>
+    </style>
+
+    <style name="text_style_M15_green" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textColor">@color/green</item>
+    </style>
+
+    <style name="text_style_B18_black_dark" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">@dimen/text_size_large</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textColor">@color/black_dark</item>
+    </style>
+
+    <style name="text_style_M21_xdark" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">@dimen/text_size_x_large</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textColor">@color/black_xdark</item>
+    </style>
+
+</resources>

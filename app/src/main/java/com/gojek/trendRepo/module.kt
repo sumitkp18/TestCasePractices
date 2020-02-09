@@ -1,10 +1,15 @@
 package com.gojek.trendRepo
 
+import com.gojek.trendRepo.repo.TrendingRepo
+import com.gojek.trendRepo.repo.TrendingRepoAPI
+import com.gojek.trendRepo.repo.TrendingRepoImpl
 import com.gojek.trendRepo.repo.URLConstants
+import com.gojek.trendRepo.ui.TrendRepoViewModel
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -21,6 +26,21 @@ private const val HTTP_CLIENT = "HTTP_CLIENT"
 private const val HTTP_LOGGING = "HTTP_LOGGING"
 private const val GSON = "GSON"
 
+/**
+ * Definition of ViewModel module
+ */
+val trendRepoVMModule = module {
+    viewModel { TrendRepoViewModel(get()) }
+}
+
+/**
+ * Definition of repository module
+ */
+val repoModule = module {
+    single<TrendingRepo> {
+        TrendingRepoImpl(createWebService<TrendingRepoAPI>(get(named(RETROFIT))))
+    }
+}
 /**
  * Definition of the network module to be used forDependency Injection using Koin
  */

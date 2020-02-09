@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="repoItem"
+            type="com.gojek.trendRepo.model.Repository" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_xx_small"
+                android:background="@color/light_grey"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!--        //todo: need to change margin from 20dp to 21dp -->
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/avatar"
+                android:layout_width="@dimen/space_xxx_large"
+                android:layout_height="@dimen/space_xxx_large"
+                android:layout_marginStart="@dimen/space_large"
+                android:layout_marginTop="@dimen/space_large"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider"
+                tools:src="@drawable/ic_launcher_background" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/author"
+                style="@style/text_style_R12_black_base"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_medium_x_large"
+                android:layout_marginTop="@dimen/space_medium_x_large"
+                android:text="@{repoItem.author}"
+                app:layout_constraintStart_toEndOf="@id/avatar"
+                app:layout_constraintTop_toBottomOf="@id/divider"
+                tools:text="Author" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/repo_name"
+                style="@style/text_style_M15_black_base"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/space_medium_x_large"
+                android:layout_marginStart="@dimen/space_medium_x_large"
+                android:layout_marginTop="@dimen/space_small_medium"
+                android:text="@{repoItem.name}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/avatar"
+                app:layout_constraintTop_toBottomOf="@id/author"
+                app:layout_constraintVertical_bias="0"
+                tools:text="Repository Name" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/desc"
+                style="@style/text_style_R12_black_base_pf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/space_medium_x_large"
+                android:layout_marginTop="@dimen/space_medium"
+                android:text="@{repoItem.description.concat(`(`+repoItem.url+`(`)}"
+                app:layout_constraintStart_toStartOf="@id/repo_name"
+                app:layout_constraintTop_toBottomOf="@id/repo_name"
+                tools:text="后端架构师技术图谱 (https://github.com/xingshaocheng/architect-awesome)" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/space_medium_x_large"
+                android:layout_marginTop="@dimen/space_medium"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@id/repo_name"
+                app:layout_constraintTop_toBottomOf="@id/desc">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/language_icon"
+                    android:layout_width="@dimen/space_medium_x_large"
+                    android:layout_height="@dimen/space_medium_x_large"
+                    android:layout_marginEnd="@dimen/space_small"
+                    android:src="@drawable/language_dot" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/language_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/space_medium_x_large"
+                    android:text="@{repoItem.language}"
+                    tools:text="C++" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/star_icon"
+                    android:layout_width="@dimen/space_medium_x_large"
+                    android:layout_height="@dimen/space_medium_x_large"
+                    android:layout_marginEnd="@dimen/space_small"
+                    android:src="@mipmap/star_yellow" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/star_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/space_medium_x_large"
+                    android:text="@{repoItem.stars.toString()}"
+                    tools:text="580" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/fork_icon"
+                    android:layout_width="@dimen/space_medium_x_large"
+                    android:layout_height="@dimen/space_medium_x_large"
+                    android:layout_marginEnd="@dimen/space_small"
+                    android:src="@mipmap/fork_black" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/fork_text"
+                    style="@style/text_style_R12_black_base"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{repoItem.stars.toString()}"
+                    tools:text="580" />
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

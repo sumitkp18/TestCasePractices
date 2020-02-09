@@ -17,7 +17,7 @@ class TrendRepoApplication : Application() {
         startKoin {
             androidLogger()
             androidContext(this@TrendRepoApplication)
-            modules(listOf(networkModule))
+            modules(listOf(networkModule, repoModule, trendRepoVMModule))
         }
 
     }

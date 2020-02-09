@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">TrendRepo</string>
+    <string name="toolbar_title">Trending</string>
+    <string name="menu_title">filter</string>
 </resources>

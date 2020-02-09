@@ -45,6 +45,9 @@ dependencies {
     api AppDeps.materialComponents
     api AppDeps.constraintLayout
     api AppDeps.recyclerView
+    implementation 'com.facebook.shimmer:shimmer:0.1.0@aar'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
