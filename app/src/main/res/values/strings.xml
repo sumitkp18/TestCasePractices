@@ -2,4 +2,7 @@
     <string name="app_name">TrendRepo</string>
     <string name="toolbar_title">Trending</string>
     <string name="menu_title">filter</string>
+    <string name="no_network_title">Something went wrong..</string>
+    <string name="no_network_msg">An alien is probably blocking your signal.</string>
+    <string name="retry_btn">RETRY</string>
 </resources>

@@ -67,7 +67,7 @@ class ListAdapter : RecyclerView.Adapter<RepoItemViewHolder>() {
             with(binding) {
                 repoItem = repository
                 repository.avatar.let {
-                    Picasso.get().load(it).into(avatar)
+                    Picasso.get().load(it).into(avatarView)
                 }
                 repository.languageColor?.let {
                     (languageIcon.drawable as GradientDrawable).setColor(Color.parseColor(it))
