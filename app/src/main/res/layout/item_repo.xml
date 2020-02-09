@@ -28,15 +28,25 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <!--        //todo: need to change margin from 20dp to 21dp -->
-            <ImageView
-                android:id="@+id/avatar_view"
-                android:layout_width="@dimen/space_xxx_large"
-                android:layout_height="@dimen/space_xxx_large"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/avatar_view_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/space_large"
                 android:layout_marginTop="@dimen/space_large"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/divider"
+                app:cardCornerRadius="@dimen/space_medium_x_large"
+                app:cardElevation="@dimen/space_zero">
+
+            <ImageView
+                android:id="@+id/avatar_view"
+                android:layout_width="@dimen/space_xxx_large"
+                android:layout_height="@dimen/space_xxx_large"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider"
                 tools:src="@drawable/ic_launcher_background" />
+            </androidx.cardview.widget.CardView>
 
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -47,7 +57,7 @@
                 android:layout_marginStart="@dimen/space_medium_x_large"
                 android:layout_marginTop="@dimen/space_medium_x_large"
                 android:text="@{repoItem.author}"
-                app:layout_constraintStart_toEndOf="@id/avatar_view"
+                app:layout_constraintStart_toEndOf="@id/avatar_view_card"
                 app:layout_constraintTop_toBottomOf="@id/divider"
                 tools:text="Author" />
 
@@ -61,7 +71,7 @@
                 android:layout_marginTop="@dimen/space_small_medium"
                 android:text="@{repoItem.name}"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/avatar_view"
+                app:layout_constraintStart_toEndOf="@id/avatar_view_card"
                 app:layout_constraintTop_toBottomOf="@id/author"
                 app:layout_constraintVertical_bias="0"
                 tools:text="Repository Name" />
@@ -69,11 +79,12 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/desc"
                 style="@style/text_style_R12_black_base_pf"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/space_zero"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/space_medium_x_large"
                 android:layout_marginTop="@dimen/space_medium"
-                android:text="@{repoItem.description.concat(`(`+repoItem.url+`(`)}"
+                android:text="@{repoItem.description.concat(`(`+repoItem.url+`)`)}"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/repo_name"
                 app:layout_constraintTop_toBottomOf="@id/repo_name"
                 tools:text="后端架构师技术图谱 (https://github.com/xingshaocheng/architect-awesome)" />
