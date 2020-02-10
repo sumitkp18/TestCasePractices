@@ -11,6 +11,7 @@ import com.gojek.trendRepo.model.Repository
 import kotlinx.android.synthetic.main.activity_trending_repo.no_network_layout
 import kotlinx.android.synthetic.main.activity_trending_repo.rv_repo
 import kotlinx.android.synthetic.main.activity_trending_repo.shimmer_view_container
+import kotlinx.android.synthetic.main.activity_trending_repo.swipe_refresh
 import kotlinx.android.synthetic.main.layout_no_network.view.retry_btn
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -47,6 +48,13 @@ class TrendingRepoActivity : AppCompatActivity() {
         no_network_layout.retry_btn.setOnClickListener {
             shimmer_view_container.startShimmerAnimation()
             viewModel.fetchRepoDetails()
+        }
+        swipe_refresh.setOnRefreshListener {
+            listAdapter.clearData()
+            listAdapter.notifyDataSetChanged()  
+            shimmer_view_container.startShimmerAnimation()
+            swipe_refresh.isRefreshing = false
+            viewModel.fetchRepoDetails(true)
         }
     }
 

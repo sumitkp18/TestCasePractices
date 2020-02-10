@@ -20,9 +20,9 @@ class TrendRepoViewModel(private val repo: TrendingRepo) : ViewModel() {
     /**
      * method to fetch the details of trending repositories
      */
-    fun fetchRepoDetails() {
+    fun fetchRepoDetails(fetchFromServer: Boolean = false) {
         networkError.set(false)
-        val disposable = repo.getTrendingRepos().subscribe( {
+        val disposable = repo.getTrendingRepos(fetchFromServer).subscribe( {
             fetchedRepoDetails.postValue(it)
         },
         { t ->

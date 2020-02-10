@@ -28,13 +28,15 @@ object TrendRepoDatabaseManager {
     private fun deleteRepoData() {
         getRealmInstance().transaction { realm ->
             val cacheData = findFirst(CacheRepoData::class.java)
-            cacheData?.data?.forEach { repository ->
-                repository.builtBy?.forEach { contributor ->
-                    realm.deleteById(Contributor::class.java, contributor.id)
+            cacheData?.let {
+                it.data?.forEach { repository ->
+                    repository.builtBy?.forEach { contributor ->
+                        realm.deleteById(Contributor::class.java, contributor.id)
+                    }
+                    realm.deleteById(Repository::class.java, repository.id)
                 }
-                realm.deleteById(Repository::class.java, repository.id)
+                realm.deleteById(CacheRepoData::class.java, it.id)
             }
-            realm.deleteById(CacheRepoData::class.java, cacheData?.id)
         }
     }
 

@@ -44,11 +44,8 @@ fun Realm.transaction(action: (Realm) -> Unit) {
 }
 
 fun <T : RealmModel> T.hasPrimaryKey(realm: Realm): Boolean {
-    realm.schema.get(this.javaClass.simpleName)?.let {
-        throw IllegalArgumentException(
-            this.javaClass.simpleName + " is not part of the schema for this Realm. " +
-                    "Did you add realm-android plugin in your build.gradle file?"
-        )
+    if (realm.schema.get(this.javaClass.simpleName) == null) {
+        throw IllegalArgumentException(this.javaClass.simpleName + " is not part of the schema for this Realm. Did you add realm-android plugin in your build.gradle file?")
     }
     return realm.schema.get(this.javaClass.simpleName)?.hasPrimaryKey() == true
 }
