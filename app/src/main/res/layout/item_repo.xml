@@ -36,7 +36,7 @@
                 android:layout_marginTop="@dimen/space_large"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/divider"
-                app:cardCornerRadius="@dimen/space_medium_x_large"
+                app:cardCornerRadius="@dimen/space_medium_xx_large"
                 app:cardElevation="@dimen/space_zero">
 
             <ImageView
@@ -54,8 +54,8 @@
                 style="@style/text_style_R12_black_base"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/space_medium_x_large"
-                android:layout_marginTop="@dimen/space_medium_x_large"
+                android:layout_marginStart="@dimen/space_medium_xx_large"
+                android:layout_marginTop="@dimen/space_medium_xx_large"
                 android:text="@{repoItem.author}"
                 app:layout_constraintStart_toEndOf="@id/avatar_view_card"
                 app:layout_constraintTop_toBottomOf="@id/divider"
@@ -66,8 +66,8 @@
                 style="@style/text_style_M15_black_base"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/space_medium_x_large"
-                android:layout_marginStart="@dimen/space_medium_x_large"
+                android:layout_marginBottom="@dimen/space_medium_xx_large"
+                android:layout_marginStart="@dimen/space_medium_xx_large"
                 android:layout_marginTop="@dimen/space_small_medium"
                 android:text="@{repoItem.name}"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -81,7 +81,7 @@
                 style="@style/text_style_R12_black_base_pf"
                 android:layout_width="@dimen/space_zero"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/space_medium_x_large"
+                android:layout_marginEnd="@dimen/space_medium_xx_large"
                 android:layout_marginTop="@dimen/space_medium"
                 android:text="@{repoItem.description.concat(`(`+repoItem.url+`)`)}"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -92,7 +92,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/space_medium_x_large"
+                android:layout_marginBottom="@dimen/space_medium_xx_large"
                 android:layout_marginTop="@dimen/space_medium"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -101,8 +101,8 @@
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/language_icon"
-                    android:layout_width="@dimen/space_medium_x_large"
-                    android:layout_height="@dimen/space_medium_x_large"
+                    android:layout_width="@dimen/space_medium_xx_large"
+                    android:layout_height="@dimen/space_medium_xx_large"
                     android:layout_marginEnd="@dimen/space_small"
                     android:src="@drawable/language_dot" />
 
@@ -110,14 +110,14 @@
                     android:id="@+id/language_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/space_medium_x_large"
+                    android:layout_marginEnd="@dimen/space_medium_xx_large"
                     android:text="@{repoItem.language}"
                     tools:text="C++" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/star_icon"
-                    android:layout_width="@dimen/space_medium_x_large"
-                    android:layout_height="@dimen/space_medium_x_large"
+                    android:layout_width="@dimen/space_medium_xx_large"
+                    android:layout_height="@dimen/space_medium_xx_large"
                     android:layout_marginEnd="@dimen/space_small"
                     android:src="@mipmap/star_yellow" />
 
@@ -125,14 +125,14 @@
                     android:id="@+id/star_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/space_medium_x_large"
+                    android:layout_marginEnd="@dimen/space_medium_xx_large"
                     android:text="@{repoItem.stars.toString()}"
                     tools:text="580" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/fork_icon"
-                    android:layout_width="@dimen/space_medium_x_large"
-                    android:layout_height="@dimen/space_medium_x_large"
+                    android:layout_width="@dimen/space_medium_xx_large"
+                    android:layout_height="@dimen/space_medium_xx_large"
                     android:layout_marginEnd="@dimen/space_small"
                     android:src="@mipmap/fork_black" />
 

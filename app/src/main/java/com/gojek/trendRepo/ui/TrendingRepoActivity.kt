@@ -1,6 +1,9 @@
 package com.gojek.trendRepo.ui
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -28,9 +31,17 @@ class TrendingRepoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         viewBinding = DataBindingUtil.setContentView(this, R.layout.activity_trending_repo)
         viewBinding.networkError = viewModel.networkError
+
+        //custom view on action bar for center aligned title
+        supportActionBar?.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+        supportActionBar?.setCustomView(R.layout.layout_action_bar_title)
+
+        //setup
         initObservers()
         initListeners()
         setUpRecyclerView()
+
+        //fetching data
         if (viewModel.fetchedRepoDetails.value == null) {
             viewModel.fetchRepoDetails()
         } else {
@@ -38,26 +49,41 @@ class TrendingRepoActivity : AppCompatActivity() {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.options, menu)
+        return true
+    }
+
+    /**
+     * initializes observers
+     */
     private fun initObservers() {
         viewModel.fetchedRepoDetails.observe(this, Observer {
             setAdapter(it)
         })
     }
 
+    /**
+     * initializes various listeners
+     */
     private fun initListeners() {
         no_network_layout.retry_btn.setOnClickListener {
             shimmer_view_container.startShimmerAnimation()
-            viewModel.fetchRepoDetails()
+            viewModel.fetchRepoDetails(fetchFromServer = true)
         }
         swipe_refresh.setOnRefreshListener {
             listAdapter.clearData()
-            listAdapter.notifyDataSetChanged()  
+            listAdapter.notifyDataSetChanged()
             shimmer_view_container.startShimmerAnimation()
             swipe_refresh.isRefreshing = false
             viewModel.fetchRepoDetails(true)
         }
     }
 
+    /**
+     * sets data in the list adapter of recycler view
+     */
     private fun setAdapter(repoList: List<Repository>?) {
         repoList?.let {
             listAdapter.setData(it)

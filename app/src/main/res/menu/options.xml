@@ -2,8 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/settings"
+        android:id="@+id/filter"
         android:icon="@mipmap/more_black"
         android:title="@string/menu_title"
-        app:showAsAction="always" />
+
+        app:showAsAction="always">
+        <menu>
+            <item android:id="@+id/star_sort"
+                android:title="@string/sort_by_stars" />
+            <item android:id="@+id/name_sort"
+                android:title="@string/sort_by_name" />
+        </menu>
+    </item>
 </menu>

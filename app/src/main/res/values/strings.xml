@@ -5,4 +5,6 @@
     <string name="no_network_title">Something went wrong..</string>
     <string name="no_network_msg">An alien is probably blocking your signal.</string>
     <string name="retry_btn">RETRY</string>
+    <string name="sort_by_name">Sort by name</string>
+    <string name="sort_by_stars">Sort by stars</string>
 </resources>

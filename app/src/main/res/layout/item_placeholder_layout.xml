@@ -7,7 +7,7 @@
         android:id="@+id/thumbnail"
         android:layout_width="@dimen/space_xxx_large"
         android:layout_height="@dimen/space_xxx_large"
-        android:layout_marginEnd="@dimen/space_medium_x_large"
+        android:layout_marginEnd="@dimen/space_medium_xx_large"
         android:layout_marginStart="@dimen/space_large"
         android:layout_marginTop="@dimen/space_large"
         android:layout_marginBottom="@dimen/space_large"
@@ -28,7 +28,7 @@
         <View
             android:layout_width="@dimen/space_5x_large"
             android:layout_height="@dimen/space_small_medium"
-            android:layout_marginTop="@dimen/space_medium_x_large"
+            android:layout_marginTop="@dimen/space_medium_xx_large"
             android:background="@drawable/bg_curve" />
     </LinearLayout>
 

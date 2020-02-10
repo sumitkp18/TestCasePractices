@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="@dimen/space_3x_medium_large"
+    android:layout_gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/text_style_M21_xdark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_medium_x_large"
+        android:layout_marginBottom="@dimen/space_medium_x_large"
+        android:layout_gravity="center"
+        android:text="@string/toolbar_title" />
+</LinearLayout>

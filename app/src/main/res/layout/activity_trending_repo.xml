@@ -18,36 +18,15 @@
         android:layout_height="match_parent"
         tools:context=".ui.TrendingRepoActivity">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/app_bar"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/space_3x_medium_large"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <androidx.appcompat.widget.Toolbar
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:menu="@menu/options">
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    style="@style/text_style_M21_xdark"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/toolbar_title" />
-
-            </androidx.appcompat.widget.Toolbar>
-        </com.google.android.material.appbar.AppBarLayout>
-
         <com.facebook.shimmer.ShimmerFrameLayout
             android:id="@+id/shimmer_view_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="@dimen/space_medium_x_large"
+            android:layout_marginTop="@dimen/space_medium_xx_large"
             android:orientation="vertical"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/app_bar">
+            app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -82,7 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/app_bar"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0">
 
             <androidx.recyclerview.widget.RecyclerView
@@ -95,7 +74,8 @@
         <include
             android:id="@+id/no_network_layout"
             layout="@layout/layout_no_network"
-            android:visibility="@{networkError ? View.VISIBLE : View.GONE }" />
+            android:visibility="@{networkError ? View.VISIBLE : View.GONE }"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
