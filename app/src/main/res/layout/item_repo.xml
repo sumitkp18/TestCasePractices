@@ -12,13 +12,14 @@
     </data>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/item_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:background="?android:attr/selectableItemBackground">
 
             <View
                 android:id="@+id/divider"
@@ -90,6 +91,7 @@
                 tools:text="后端架构师技术图谱 (https://github.com/xingshaocheng/architect-awesome)" />
 
             <LinearLayout
+                android:id="@+id/git_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/space_medium_xx_large"
@@ -145,6 +147,14 @@
                     tools:text="580" />
 
             </LinearLayout>
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/collapsed_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:constraint_referenced_ids="git_info,desc" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </layout>

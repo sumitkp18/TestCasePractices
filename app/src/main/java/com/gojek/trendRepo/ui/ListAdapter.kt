@@ -3,6 +3,7 @@ package com.gojek.trendRepo.ui
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.cardview.widget.CardView
 import androidx.databinding.DataBindingUtil
@@ -19,6 +20,7 @@ import com.squareup.picasso.Picasso
 class ListAdapter : RecyclerView.Adapter<RepoItemViewHolder>() {
 
     private val dataSet: ArrayList<Repository> = arrayListOf()
+    private var expandedItemPosition: Int? = null
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, position: Int): RepoItemViewHolder {
 
@@ -57,7 +59,7 @@ class ListAdapter : RecyclerView.Adapter<RepoItemViewHolder>() {
     /**
      * ViewHolder class for a single item of repository detail in recycler view
      */
-    class RepoItemViewHolder(private val binding: ItemRepoBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class RepoItemViewHolder(private val binding: ItemRepoBinding) : RecyclerView.ViewHolder(binding.root) {
 
         /**
          * Method to bind data
@@ -72,6 +74,46 @@ class ListAdapter : RecyclerView.Adapter<RepoItemViewHolder>() {
                 repository.languageColor?.let {
                     (languageIcon.drawable as GradientDrawable).setColor(Color.parseColor(it))
                 }
+
+                if (layoutPosition == expandedItemPosition) {
+                    expand()
+                } else {
+                    collapse()
+                }
+
+                itemCard.setOnClickListener {
+                    if (layoutPosition == expandedItemPosition) {
+                        collapse()
+                        expandedItemPosition = null
+                    } else {
+                        val lastExpandedItemPosition = expandedItemPosition
+                        expandedItemPosition = layoutPosition
+                        notifyItemChanged(layoutPosition)
+                        lastExpandedItemPosition?.let { notifyItemChanged(it) }
+                    }
+                }
+            }
+        }
+
+        /**
+         * expand card
+         */
+        private fun expand() {
+            binding.collapsedGroup.visibility = View.VISIBLE
+            if (itemView is CardView) {
+                itemView.cardElevation =
+                    itemView.resources.getDimensionPixelSize(R.dimen.expanded_card_elevation).toFloat()
+            }
+
+        }
+
+        /**
+         * collapse card
+         */
+        private fun collapse() {
+            binding.collapsedGroup.visibility = View.GONE
+            if (itemView is CardView) {
+                itemView.cardElevation = itemView.resources.getDimensionPixelSize(R.dimen.space_zero).toFloat()
             }
         }
     }

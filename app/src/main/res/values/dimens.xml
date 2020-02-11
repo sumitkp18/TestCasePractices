@@ -32,5 +32,7 @@
     <dimen name="text_size_xxxx_large">32sp</dimen>
     <dimen name="text_size_xxxxx_large">62sp</dimen>
 
+    <dimen name="expanded_card_elevation">5dp</dimen>
+
 
 </resources>
