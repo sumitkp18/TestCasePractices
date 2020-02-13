@@ -16,6 +16,11 @@ object Versions {
     const val constraintLayout = "1.1.3"
     const val reactiveNetwork= "3.0.3"
     const val recyclerview = "1.1.0"
+    const val mockito = "2.8.47"
+    const val shimmer = "0.1.0@aar"
+    const val picasso = "2.71828"
+    const val mockk = "1.9.3"
+    const val archCoreTesting = "2.1.0"
 }
 
 object LibDeps {
@@ -27,6 +32,11 @@ object LibDeps {
     val koin = "org.koin:koin-android:${Versions.koin}"
     val rxJavaAdapter = "com.squareup.retrofit2:adapter-rxjava2:${Versions.rxJavaAdapter}"
     val reactiveNetwork = "com.github.pwittchen:reactivenetwork-rx2:${Versions.reactiveNetwork}"
+    val mockito = "org.mockito:mockito-core:${Versions.mockito}"
+    val mockitoAndroid = "org.mockito:mockito-android:${Versions.mockito}"
+    val koinTest = "org.koin:koin-test:${Versions.koin}"
+    val mockk = "io.mockk:mockk:${Versions.mockk}"
+    val archCoreTesting = "androidx.arch.core:core-testing:${Versions.archCoreTesting}"
 }
 
 object AppDeps {
@@ -36,4 +46,6 @@ object AppDeps {
     val materialComponents = "com.google.android.material:material:${Versions.materialComponents}"
     val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerview}"
+    val shimmerAnimation = "com.facebook.shimmer:shimmer:${Versions.shimmer}"
+    val picasso = "com.squareup.picasso:picasso:${Versions.picasso}"
 }
