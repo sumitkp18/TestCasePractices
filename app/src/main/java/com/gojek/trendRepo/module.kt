@@ -42,7 +42,7 @@ val repoModule = module {
     }
 }
 /**
- * Definition of the network module to be used forDependency Injection using Koin
+ * Definition of the network module to be used for Dependency Injection using Koin
  */
 val networkModule = module {
     single(named(RETROFIT)) { provideRetrofit(get(named(HTTP_CLIENT)), get(named(GSON))) }
@@ -79,8 +79,7 @@ fun providesOkHttpClient(interceptor: HttpLoggingInterceptor): OkHttpClient {
  */
 fun providesHttplogging(): HttpLoggingInterceptor {
     val interceptor = HttpLoggingInterceptor()
-    interceptor.level = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY
-    else HttpLoggingInterceptor.Level.NONE
+    interceptor.level = HttpLoggingInterceptor.Level.BODY
     return interceptor
 }
 

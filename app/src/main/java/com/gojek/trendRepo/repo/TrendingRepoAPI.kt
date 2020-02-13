@@ -13,6 +13,7 @@ interface TrendingRepoAPI {
 
     /**
      * API to fetch details of trending repositories
+     * @param url endpoint for fetching trending repositories
      */
     @GET
     fun getTrendingRepos(@Url url: String): Observable<List<Repository>>

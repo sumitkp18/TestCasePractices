@@ -55,7 +55,7 @@ object TrendRepoDatabaseManager {
     }
 
     /**
-     * Deletes existing repository model objects and inserts new ones.
+     * Inserts new data after deleting existing repository model objects.
      */
     fun insertRepoData(repoList: List<Repository>) {
         deleteRepoData()

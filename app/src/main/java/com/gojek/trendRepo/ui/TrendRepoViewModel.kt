@@ -9,13 +9,13 @@ import com.gojek.trendRepo.repo.TrendingRepo
 import io.reactivex.disposables.CompositeDisposable
 
 /**
- * ViewModel class for the TrendingRepoActivity
+ * ViewModel class for the [TrendingRepoActivity]
  */
 class TrendRepoViewModel(private val repo: TrendingRepo) : ViewModel() {
     private val TAG = TrendRepoViewModel::class.java.simpleName
     val fetchedRepoDetails = MutableLiveData<List<Repository>>()
     val networkError  = ObservableBoolean()
-    val compositeDisposable = CompositeDisposable()
+    private val compositeDisposable = CompositeDisposable()
 
     /**
      * method to fetch the details of trending repositories
@@ -30,6 +30,13 @@ class TrendRepoViewModel(private val repo: TrendingRepo) : ViewModel() {
             Log.d(TAG, t.message.toString())
         })
         compositeDisposable.add(disposable)
+    }
+
+    /**
+     * clears the [CompositeDisposable]
+     */
+    override fun onCleared() {
+        compositeDisposable.clear()
     }
 
 }

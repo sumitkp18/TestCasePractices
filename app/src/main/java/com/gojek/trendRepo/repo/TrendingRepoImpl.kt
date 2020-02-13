@@ -7,7 +7,7 @@ import com.gojek.trendRepo.util.RxNetwork
 import io.reactivex.Observable
 
 /**
- * Implementation class of the TrendingRepo Interface
+ * Implementation class of the [TrendingRepo] Interface
  */
 class TrendingRepoImpl(private val trendingRepoAPI: TrendingRepoAPI) : TrendingRepo {
 

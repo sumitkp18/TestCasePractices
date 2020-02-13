@@ -14,12 +14,12 @@ object AppRxSchedulers {
     private val mainThread: Scheduler = AndroidSchedulers.mainThread()
 
     /**
-     * Returns networkIO executor with a threadpool of three threads
+     * Returns networkIO executor
      */
     fun network(): Scheduler = network
 
     /**
-     * Returns Database executor with a threadpool of three threads
+     * Returns Database executor
      */
     fun database(): Scheduler = database
 

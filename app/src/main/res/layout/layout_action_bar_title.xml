@@ -9,8 +9,8 @@
         style="@style/text_style_M21_xdark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/space_medium_x_large"
-        android:layout_marginBottom="@dimen/space_medium_x_large"
+        android:paddingTop="@dimen/space_medium_x_large"
+        android:paddingBottom="@dimen/space_medium_x_large"
         android:layout_gravity="center"
         android:text="@string/toolbar_title" />
 </LinearLayout>

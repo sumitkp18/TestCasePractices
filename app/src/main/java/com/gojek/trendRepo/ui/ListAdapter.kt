@@ -49,7 +49,7 @@ class ListAdapter : RecyclerView.Adapter<RepoItemViewHolder>() {
 
     /**
      * This method updates the latest data set to the adapter
-     * @param rowTypeList: view type arraylist {@link ViewHoldersFactory}
+     * @param data: List of [Repository] objects
      */
     fun setData(data: List<Repository>) {
         clearData()

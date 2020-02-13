@@ -3,6 +3,7 @@ package com.gojek.trendRepo.ui
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
+import android.view.View
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -35,6 +36,8 @@ class TrendingRepoActivity : AppCompatActivity() {
         //custom view on action bar for center aligned title
         supportActionBar?.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
         supportActionBar?.setCustomView(R.layout.layout_action_bar_title)
+        supportActionBar?.elevation = resources.getDimensionPixelSize(R.dimen.space_zero).toFloat()
+
 
         //setup
         initObservers()
@@ -70,9 +73,11 @@ class TrendingRepoActivity : AppCompatActivity() {
     private fun initListeners() {
         no_network_layout.retry_btn.setOnClickListener {
             shimmer_view_container.startShimmerAnimation()
+            shimmer_view_container.visibility = View.VISIBLE
             viewModel.fetchRepoDetails(fetchFromServer = true)
         }
         swipe_refresh.setOnRefreshListener {
+            shimmer_view_container.visibility = View.VISIBLE
             listAdapter.clearData()
             listAdapter.notifyDataSetChanged()
             shimmer_view_container.startShimmerAnimation()
@@ -88,6 +93,7 @@ class TrendingRepoActivity : AppCompatActivity() {
         repoList?.let {
             listAdapter.setData(it)
             listAdapter.notifyDataSetChanged()
+            shimmer_view_container.visibility = View.GONE
             shimmer_view_container.stopShimmerAnimation()
         }
     }
@@ -109,10 +115,5 @@ class TrendingRepoActivity : AppCompatActivity() {
     override fun onPause() {
         shimmer_view_container.stopShimmerAnimation()
         super.onPause()
-    }
-
-    override fun onDestroy() {
-        viewModel.compositeDisposable.clear()
-        super.onDestroy()
     }
 }
