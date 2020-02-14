@@ -2,7 +2,6 @@ package com.gojek.trendRepo.ui
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.gojek.trendRepo.model.Repository
-import com.gojek.trendRepo.repo.TestTrendingRepoImpl
 import com.gojek.trendRepo.repo.TrendingRepo
 import com.google.gson.Gson
 import com.google.gson.JsonArray
@@ -34,7 +33,7 @@ class TestTrendRepoViewModel {
      * get config JSONObject from config file
      * */
     private fun getConfigJsonFromFile(fileName: String): JsonArray {
-        val file = TestTrendingRepoImpl::class.java.getResource(fileName)!!.readText()
+        val file = TestTrendRepoViewModel::class.java.getResource(fileName)?.readText()
         return JsonParser().parse(file).asJsonArray
     }
 
