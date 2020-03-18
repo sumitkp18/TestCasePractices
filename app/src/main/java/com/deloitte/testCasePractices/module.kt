@@ -4,6 +4,7 @@ import com.deloitte.testCasePractices.repo.Repo
 import com.deloitte.testCasePractices.repo.API
 import com.deloitte.testCasePractices.repo.RepoImpl
 import com.deloitte.testCasePractices.repo.URLConstants
+import com.deloitte.testCasePractices.repo.database.DatabaseManager
 import com.deloitte.testCasePractices.ui.FetchViewModel
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -22,6 +23,7 @@ import java.util.concurrent.TimeUnit
  */
 
 private const val RETROFIT = "RETROFIT"
+private const val DATABASE = "DATABASE"
 private const val HTTP_CLIENT = "HTTP_CLIENT"
 private const val HTTP_LOGGING = "HTTP_LOGGING"
 private const val GSON = "GSON"
@@ -37,10 +39,12 @@ val fetchVMModule = module {
  * Definition of repository module
  */
 val repoModule = module {
+    single(named(DATABASE)) { DatabaseManager() }
     single<Repo> {
-        RepoImpl(createWebService<API>(get(named(RETROFIT))))
+        RepoImpl(createWebService<API>(get(named(RETROFIT))), get(named(DATABASE)))
     }
 }
+
 /**
  * Definition of the network module to be used for Dependency Injection using Koin
  */

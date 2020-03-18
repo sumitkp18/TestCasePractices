@@ -10,12 +10,15 @@ import io.realm.RealmList
 /**
  * A Realm based database manager with caching
  */
-object DatabaseManager {
+class DatabaseManager {
 
     private var configuration: RealmConfiguration
-    const val SCHEMA_VERSION = 1L
-    const val DATABASE_NAME = "testCasePractices.realm"
-    const val CACHE_EXPIRATION_TIME = 2 * 60 * 60 * 1000
+
+    companion object {
+        const val SCHEMA_VERSION = 1L
+        const val DATABASE_NAME = "testCasePractices.realm"
+        const val CACHE_EXPIRATION_TIME = 2 * 60 * 60 * 1000
+    }
 
     init {
         configuration = RealmConfiguration.Builder().schemaVersion(SCHEMA_VERSION).name(DATABASE_NAME).build()

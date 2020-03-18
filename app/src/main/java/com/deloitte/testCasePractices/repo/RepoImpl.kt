@@ -9,7 +9,7 @@ import io.reactivex.Observable
 /**
  * Implementation class of the [Repo] Interface
  */
-class RepoImpl(private val API: API) : Repo {
+class RepoImpl(private val API: API, private val databaseManager: DatabaseManager) : Repo {
 
     /**
      * Method to fetch details of trending repositories.
@@ -21,7 +21,7 @@ class RepoImpl(private val API: API) : Repo {
                 if (isInternetAvailable) {
                     API.getTrendingRepos(URLConstants.REPO_ENDPOINT)
                         .subscribeOn(AppRxSchedulers.network()).concatMap {
-                            insertToDB(it)
+                            databaseManager.insertRepoData(it)
                             Observable.just(it)
                         }
                 } else {
@@ -29,18 +29,10 @@ class RepoImpl(private val API: API) : Repo {
                 }
             }
         } else {
-            return getTrendingReposFromDB() ?: getTrendingRepos(true)
+            databaseManager.getRepoData()?.let {
+                return Observable.just(it)
+            }
+            return getTrendingRepos(true)
         }
     }
-
-    fun insertToDB(listOfRepos: List<Repository>) {
-        DatabaseManager.insertRepoData(listOfRepos)
-    }
-
-    fun getTrendingReposFromDB(): Observable<List<Repository>>? {
-        return DatabaseManager.getRepoData()?.let {
-            Observable.just(it)
-        }
-    }
-
 }
