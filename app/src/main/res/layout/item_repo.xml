@@ -7,7 +7,7 @@
 
         <variable
             name="repoItem"
-            type="com.gojek.trendRepo.model.Repository" />
+            type="com.deloitte.testCasePractices.model.Repository" />
 
     </data>
 

@@ -8,11 +8,13 @@ apply plugin: 'kotlin-kapt'
 
 apply plugin: 'realm-android'
 
+apply from: '../jacoco_app.gradle'
+
 android {
     compileSdkVersion Versions.compileSDK
     buildToolsVersion "29.0.2"
     defaultConfig {
-        applicationId "com.gojek.trendRepo"
+        applicationId "com.deloitte.testCasePractices"
         minSdkVersion Versions.minSDK
         targetSdkVersion Versions.targetSDK
         versionCode 1

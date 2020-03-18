@@ -1,0 +1,71 @@
+apply plugin: 'jacoco'
+jacoco {
+    toolVersion = "0.8.0"
+    reportsDir = file("$buildDir/reports")
+}
+/**
+ * The correct path of the report is $rootProjectDir/app/build/reports/jacoco_app/index.html
+ * to run this task use: ./gradlew app:clean app:jacocoTestReport
+ */
+task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest']) { //we use "debug" build type for test coverage (can be other)
+    group = "reporting"
+    description = "Generate unified Jacoco code coverage report"
+
+    reports {
+        xml.enabled false
+        csv.enabled false
+    }
+
+    def fileFilter = [
+            '**/*Test*.*',
+            '**/AutoValue_*.*',
+            '**/*JavascriptBridge.class',
+            '**/R.class',
+            '**/R$*.class',
+            '**/Manifest*.*',
+            'android/**/*.*',
+            '**/databinding',
+            '**/*DataBinderMapperImpl*',
+            '**/*BR*',
+            '**/*Decorator*',
+            '**/*Activity*',
+            '**/*Fragment*',
+            '**/activities',
+            '**/fragments',
+            '**/*Listener*',
+            '**/*module.kt',
+            '**/BuildConfig.*',
+            '**/*$ViewBinder*.*',
+            '**/*$ViewInjector*.*',
+            '**/Lambda$*.class',
+            '**/Lambda.class',
+            '**/*Lambda.class',
+            '**/*Lambda*.class',
+            '**/model',
+            '**/entity',
+            '**/*$InjectAdapter.class',
+            '**/*$ModuleAdapter.class',
+            '**/*$ViewInjector*.class',
+            '**/TypeAliases.kt',
+            '**/utils',
+            '**/network',
+            '**/exception',
+            '**/database',
+            '**/realm',
+            '**/io/realm',
+            '**/views',
+            '**/ModuleKt',
+            '**/**ViewHolder'
+    ]
+
+    def javaDebugTree = fileTree(dir: "${buildDir}/intermediates/javac/debug", excludes: fileFilter) //we use "debug" build type for test coverage (can be other)
+    def kotlinDebugTree = fileTree(dir: "${buildDir}/tmp/kotlin-classes/debug", excludes: fileFilter)
+    def mainSrc = "${project.projectDir}/src/main/java"
+
+    sourceDirectories.from = files([mainSrc])
+    classDirectories.from = files([javaDebugTree, kotlinDebugTree]) // we need to target both java and kotlin build folder
+    executionData.from = fileTree(dir: "$buildDir", includes: [
+            "jacoco/testDebugUnitTest.exec", //we use "debug" build type for test coverage (can be other)
+            "outputs/code-coverage/connected/*coverage.ec"
+    ])
+}
