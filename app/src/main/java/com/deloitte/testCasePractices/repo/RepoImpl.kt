@@ -29,8 +29,7 @@ class RepoImpl(private val API: API) : Repo {
                 }
             }
         } else {
-            getTrendingReposFromDB()
-            return getTrendingRepos(true)
+            return getTrendingReposFromDB() ?: getTrendingRepos(true)
         }
     }
 
