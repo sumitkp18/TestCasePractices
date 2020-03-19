@@ -1,13 +1,12 @@
 package com.deloitte.testCasePractices.util
 
-import com.github.pwittchen.reactivenetwork.library.rx2.ReactiveNetwork
-import com.github.pwittchen.reactivenetwork.library.rx2.internet.observing.InternetObservingSettings
-import com.github.pwittchen.reactivenetwork.library.rx2.internet.observing.strategy.SocketInternetObservingStrategy
 import io.mockk.*
-import io.reactivex.Single
 import io.reactivex.schedulers.TestScheduler
 import org.junit.*
 
+/**
+ * Test cases for RxNetwork class
+ */
 class TestRxNetwork {
 
     private val testScheduler = TestScheduler()
@@ -18,6 +17,9 @@ class TestRxNetwork {
         every { AppRxSchedulers.network() } returns testScheduler
     }
 
+    /**
+     * test case for isInternetAvailable method with a default host
+     */
     @Test
     fun testIsInternetAvailable_withDefaultHost() {
         val testObserver = RxNetwork.isInternetAvailable().test()
@@ -26,6 +28,9 @@ class TestRxNetwork {
         testObserver.dispose()
     }
 
+    /**
+     * Test case for isInternetAvailable with specifying a host
+     */
     @Test
     fun testIsInternetAvailable_withSpecifiedHost() {
         val host = "www.bing.com"
@@ -35,6 +40,9 @@ class TestRxNetwork {
         testObserver.dispose()
     }
 
+    /**
+     * test case for getNetworkNotAvailable method to fetch an error observable with a specified error message
+     */
     @Test
     fun testGetNetworkNotAvailable_withSpecifiedMessage() {
         val errorMessage = "Network not available"
@@ -45,6 +53,9 @@ class TestRxNetwork {
         testObserver.dispose()
     }
 
+    /**
+     * test case for getNetworkNotAvailable method to fetch an error observable with default error message
+     */
     @Test
     fun testGetNetworkNotAvailable_withDefaultMessage() {
         val testObserver =

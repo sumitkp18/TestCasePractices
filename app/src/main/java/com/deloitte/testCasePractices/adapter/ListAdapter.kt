@@ -1,4 +1,4 @@
-package com.deloitte.testCasePractices.ui
+package com.deloitte.testCasePractices.adapter
 
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.deloitte.testCasePractices.R
 import com.deloitte.testCasePractices.databinding.ItemRepoBinding
 import com.deloitte.testCasePractices.model.Repository
-import com.deloitte.testCasePractices.ui.ListAdapter.RepoItemViewHolder
+import com.deloitte.testCasePractices.adapter.ListAdapter.RepoItemViewHolder
 import com.squareup.picasso.Picasso
 
 /**

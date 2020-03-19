@@ -4,7 +4,7 @@ import com.deloitte.testCasePractices.repo.Repo
 import com.deloitte.testCasePractices.repo.API
 import com.deloitte.testCasePractices.repo.RepoImpl
 import com.deloitte.testCasePractices.repo.URLConstants
-import com.deloitte.testCasePractices.repo.database.DatabaseManager
+import com.deloitte.testCasePractices.repo.database.RealmDatabaseManager
 import com.deloitte.testCasePractices.ui.FetchViewModel
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -39,7 +39,7 @@ val fetchVMModule = module {
  * Definition of repository module
  */
 val repoModule = module {
-    single(named(DATABASE)) { DatabaseManager() }
+    single(named(DATABASE)) { RealmDatabaseManager() }
     single<Repo> {
         RepoImpl(createWebService<API>(get(named(RETROFIT))), get(named(DATABASE)))
     }

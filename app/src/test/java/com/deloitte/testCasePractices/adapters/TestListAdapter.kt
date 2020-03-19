@@ -1,8 +1,12 @@
-package com.deloitte.testCasePractices.ui
+package com.deloitte.testCasePractices.adapters
 
+import com.deloitte.testCasePractices.adapter.ListAdapter
 import com.deloitte.testCasePractices.model.Repository
 import org.junit.*
 
+/**
+ * Test cases for [ListAdapter]
+ */
 class TestListAdapter {
 
     private val listAdapter = ListAdapter()
@@ -12,6 +16,9 @@ class TestListAdapter {
         mockDataSet = listOf(Repository(), Repository(), Repository())
     }
 
+    /**
+     * test case for setData method to check setting of mock data in adapter dataset
+     */
     @Test
     fun testSetData_withMockDataset() {
         listAdapter.setData(mockDataSet)
@@ -20,6 +27,9 @@ class TestListAdapter {
         Assert.assertEquals(expectedValue, actualValue)
     }
 
+    /**
+     * test case for setData method to check setting of empty list to adapter dataset
+     */
     @Test
     fun testSetData_withEmptyList() {
         listAdapter.setData(emptyList())
@@ -28,6 +38,9 @@ class TestListAdapter {
         Assert.assertEquals(expectedValue, actualValue)
     }
 
+    /**
+     * test case for clearData method
+     */
     @Test
     fun testClearData_forClearingSetData() {
         listAdapter.setData(mockDataSet)

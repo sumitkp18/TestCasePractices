@@ -9,7 +9,7 @@ import com.deloitte.testCasePractices.repo.Repo
 import io.reactivex.disposables.CompositeDisposable
 
 /**
- * ViewModel class for the [MainActivity]
+ * ViewModel class for the [FetchActivity]
  */
 class FetchViewModel(private val repo: Repo) : ViewModel() {
     private val TAG = FetchViewModel::class.java.simpleName

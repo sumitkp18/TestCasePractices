@@ -12,6 +12,9 @@ import org.junit.*
 import org.junit.rules.*
 import org.mockito.Mockito.*
 
+/**
+ * Test cases for [FetchViewModel]
+ */
 class TestFetchViewModel {
 
     @get:Rule
@@ -37,16 +40,24 @@ class TestFetchViewModel {
         return JsonParser().parse(file).asJsonArray
     }
 
+    /**
+     * test case for success scenario on fetching data
+     */
     @Test
     fun testFetchRepoDetails_forSuccess() {
+        //mocking success response for call to repo for fetching data
         `when`(repo.getTrendingRepos(true)).thenReturn(Observable.just(mockRepoList))
         fetchViewModel.fetchRepoDetails(true)
         val actualValue = fetchViewModel.fetchedRepoDetails.value
         Assert.assertEquals(mockRepoList, actualValue)
     }
 
+    /**
+     * test case for error scenario on fetching data
+     */
     @Test
-    fun tstFetchRepoDetails_forError() {
+    fun testFetchRepoDetails_forError() {
+        //mocking error response for call to repo for fetching data
         `when`(repo.getTrendingRepos(true)).thenReturn(Observable.just(Throwable("Error")) as Observable<List<Repository>>)
         Assert.assertEquals(false, fetchViewModel.networkError.get())
         fetchViewModel.fetchRepoDetails(true)
